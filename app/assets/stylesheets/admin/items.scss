@@ -1,3 +1,37 @@
 // Place all the styles related to the admin/items controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.contents {
+  width: 800px;
+  margin: 0 auto;
+  padding-top: 40px;
+}
+
+.contents-title {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.item-column {
+}
+
+.item-column ul {
+}
+
+.item-column li, {
+  width: 18%;
+  display: inline-block;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.item-list li {
+  width: 18%;
+  display: inline-block;
+  font-size: 15px;
+}
+
+.new-item {
+  text-align: right;
+}
