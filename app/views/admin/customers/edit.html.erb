@@ -1,0 +1,19 @@
+<h1>会員情報編集</h1>
+
+<%= form_with model: @item, url: admin_item_path(@item.id), local:true do |f| %>
+  <p>商品画像</p>
+  <%= f.attachment_field :image, placeholder: "プロフィール画像" %>
+  <p>商品名</p>
+  <div>
+  <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"商品名" %>
+  </div>
+  <lavel for="inputIntroduction">商品説明</lavel>
+  <div>
+  <%= f.text_area :introduction, autofocus: true, id:"inputIntroduction", placeholder:"商品説明" %>
+  </div>
+  <lavel for="inputPrice">商品説明</lavel>
+  <div>
+  <%= f.text_field :price, autofocus: true, id:"inputPrice", placeholder:"税抜価格" %>円
+  </div>
+  <%= f.submit "変更を保存" %>
+<% end %>
