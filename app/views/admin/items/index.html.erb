@@ -1,10 +1,10 @@
 
   <div class="contents">
-    <h1 class="contents-title">商品一覧</h1>
+    <h1 class="admin-contents-title">商品一覧</h1>
     <p class="new-item">
       <a href="/admin/items/new">商品新規登録</a>
     </p>
-    <nav class="item-column">
+    <nav class="admin-item-column">
       <ul>
         <li>商品ID</li>
         <li>商品名</li>
@@ -13,10 +13,9 @@
         <li>ステータス</li>
       </ul>
     </nav>
-    <div class="item-list">
+    <div class="admin-item-list">
       <% @items.each do |item| %>
         <ul>
-          <%= attachment_image_tag item, :image %>
           <li><%= item.id %></li>
           <%= link_to admin_item_path(item.id) do %>
             <li><%= item.name %></li>

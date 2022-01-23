@@ -1,12 +1,12 @@
 <h1>商品編集画面</h1>
 
-<%= form_with model: @customer, url: edit_admin_customer_path(@customer.id), local:true do |f| %>
-  <p>会員ID：<%= @customer.id %></p>
-  <p>氏名：<%= f.text_field :last_name, autofocus: true, id:"inputLastName", placeholder:"姓" %> <%= f.text_field :first_name, autofocus: true, id:"inputFirstName", placeholder:"名" %></p>
-  <p>フリガナ：<%= f.text_field :last_name_kana, autofocus: true, id:"inputLastName", placeholder:"セイ" %> <%= f.text_field :first_name_kana, autofocus: true, id:"inputFirstName", placeholder:"メイ" %></p>
-  <p>郵便番号：<%= f.text_field :postal_code, autofocus: true, id:"inputPostalCode", placeholder:"郵便番号" %></p>
-  <p>住所：<%= f.text_field :address, autofocus: true, id:"inputAddress", placeholder:"住所" %></p>
-  <p>電話番号：<%= f.text_field :telephone_number, autofocus: true, id:"inputTelephoneNumber", placeholder:"電話番号" %></p>
-  <p>メールアドレス：<%= f.text_field :email, autofocus: true, id:"inputEmail", placeholder:"メールアドレス" %></p>
+<%= form_with model: @item, url: admin_item_path(@item.id), local:true do |f| %>
+  <%= f.attachment_field :image, placeholder: "プロフィール画像" %>
+  <lavel for="inputName">商品名</lavel>
+  <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"商品名" %>
+  <lavel for="inputName">商品説明</lavel>
+  <%= f.text_area :introduction, autofocus: true, id:"inputIntroduction", placeholder:"商品説明" %>
+  <lavel for="inputName">税抜価格</lavel>
+  <%= f.text_field :price, autofocus: true, id:"inputPrice", placeholder:"税抜価格" %>円
   <%= f.submit "変更を保存" %>
 <% end %>

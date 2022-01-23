@@ -1,3 +1,17 @@
 // Place all the styles related to the public/items controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.contents {
+  width: 800px;
+  margin: 0 auto;
+  padding-top: 40px;
+}
+
+.new-item-list {
+  display: flex;
+}
+
+.new-item {
+  margin-right: 30px;
+}

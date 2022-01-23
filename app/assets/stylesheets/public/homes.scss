@@ -2,11 +2,36 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.box {
-  text-align: center;
-  padding: 20px;
+.contents {
+  width: 800px;
+  margin: 0 auto;
+  padding-top: 40px;
+  display: flex;
 }
 
-.text-title {
-  color: #494544;
+.genre-box {
+  width: 200px;
 }
+
+.genre-search {
+  font-weight: bold;
+}
+
+.right-box {
+  width: 600px;
+}
+
+.explanation {
+  text-align: center;
+}
+
+.new-item-list {
+  display: flex;
+}
+
+.new-item {
+  width: 25%;
+  
+  text-align: center;
+}
+

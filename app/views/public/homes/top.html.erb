@@ -1,18 +1,34 @@
-<div class="box">
-  <h2 class="text-title">publicトップ</h1>
-  <p>ようこそ、ながのCAKEへ！</p>
-  <p>このサイトは、ケーキ販売のECサイトになります。</p>
-  <p>会員でない方も商品の閲覧はできますが、</p>
-  <p>購入には会員登録が必要になります。</p>
+<div class="contents">
   
-  <div>
-    <h2 class="text-title">新着商品</h2>
-    <a href="/items">全ての商品を見る</a>
-
-    <% @items.each do |item| %>
-      <%= attachment_image_tag item, :image, size: '100x100' %>
-      <p><%= item.name %></p>
-      <p><%= item.price %>円</p>
-    <% end %>
+  <div class="genre-box">
+    <p class="genre-search">ジャンル検索</p>
+    <ul>
+      <% @genres.each do |genre| %>
+          <li class="genre"><%= genre.name %></li>
+      <% end %>
+    </ul>
   </div>
+  
+  <div class="right-box">
+    <div class="explanation">
+      <p>ようこそ、ながのCAKEへ！</p>
+      <p>このサイトは、ケーキ販売のECサイトになります。</p>
+      <p>会員でない方も商品の閲覧はできますが、</p>
+      <p>購入には会員登録が必要になります。</p>
+    </div>
+    
+    <div class="box">
+      <h2 class="contents-title">新着一覧</h1>
+      <div class="new-item-list">
+        <% @items.each do |item| %>
+          <div class="new-item">
+            <%= attachment_image_tag item, :image, size: "150x150" %>
+            <p><%= item.name %></p>
+            <p><%= item.price %>円</p>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  
 </div>

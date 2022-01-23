@@ -1,12 +1,12 @@
 class ApplicationController < ActionController::Base
   
-  protected
+#  protected
 
- def devise_registrations_controller
-   if resource_class == Customer
-     Public::ParameterSanitizer.new(Customer, :customer, params)
-   else
-     super # Use the default one
-   end
- end
+# def devise_registrations_controller
+#   if resource_class == Customer
+#     Public::ParameterSanitizer.new(Customer, :customer, params)
+#   else
+#     super # Use the default one
+#   end
+# end
 end

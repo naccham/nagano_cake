@@ -13,52 +13,51 @@
     <header>
       <div class="header">
         <h2>
-          <a class="header-logo" href="/">NAGANO_CAKE</a>
+          <a class="header-logo" href="/">NAGANO CAKE</a>
         </h2>
         <nav class="nav-header-list">
           <ul class="header-list">
             <% if admin_signed_in? %>
               <li class="header-list-item">
-                <%= link_to "商品一覧", admin_items_path %>
+                <%= link_to "商品一覧", admin_items_path, class: "header-li" %>
               </li>
               <li class="header-list-item">
-                <%= link_to "会員一覧", admin_customers_path %>
+                <%= link_to "会員一覧", admin_customers_path, class: "header-li" %>
               </li>
               <li class="header-list-item">
-                <%= link_to "注文履歴", admin_root_path %>
+                <%= link_to "注文履歴", admin_root_path, class: "header-li" %>
               </li>
               <li class="header-list-item">
-                <%= link_to "ジャンル一覧", admin_genres_path %>
+                <%= link_to "ジャンル一覧", admin_genres_path, class: "header-li" %>
               </li>
               <li class="header-list-item">
-                <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+                <%= link_to "ログアウト", destroy_admin_session_path, class: "header-li", method: :delete %>
               </li>
             <% elsif customer_signed_in? %>
               <li class="header-list-item">
-                <a class="header-li" href="/customers">マイページ</a>
+                <%= link_to "マイページ", customer_path(current_customer.id), class: "header-li" %>
               </li>
               <li class="header-list-item">
-                <a class="header-li" href="/items">商品一覧</a>
+                <%= link_to "商品一覧", items_path, class: "header-li" %>
               </li>
               <li class="header-list-item">
-                <a class="header-li" href="/cart_items">カート</a>
+                <%= link_to "カート", cart_items_path, class: "header-li" %>
               </li>
               <li class="header-list-item">
-                <!--<a class="header-li" href="/customers/sign_out">ログアウト</a>-->
-                <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
+                <%= link_to "ログアウト", destroy_customer_session_path, class: "header-li", method: :delete %>
               </li>
             <% else %>
               <li class="header-list-item">
-                <a class="header-li" href="/about">About</a>
+                <%= link_to "About", about_path, class: "header-li" %>
               </li>
               <li class="header-list-item">
-                <a class="header-li" href="/items">商品一覧</a>
+                <%= link_to "商品一覧", items_path, class: "header-li" %>
               </li>
               <li class="header-list-item">
-                <a class="header-li" href="/customers/sign_up">新規登録</a>
+                <%= link_to "新規登録", new_customer_registration_path, class: "header-li" %>
               </li>
               <li class="header-list-item">
-                <a class="header-li" href="/customers/sign_in">ログイン</a>
+                <%= link_to "ログイン", new_customer_session_path, class: "header-li" %>
               </li>
             <% end %>
           </ul>

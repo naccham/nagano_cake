@@ -1,0 +1,7 @@
+<%= attachment_image_tag @item, :image %>
+<p><%= @item.name %></p>
+<p><%= @item.introduction%></p>
+<p>¥<%= @item.price %>(税込)</p>
+
+<%= form_with model: @post_image, local:true do |f| %>
+<%= f.hidden_field :name, value: "楽しいRuby" %>

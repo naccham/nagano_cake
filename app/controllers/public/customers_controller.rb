@@ -10,7 +10,7 @@ class Public::CustomersController < ApplicationController
   
   def update
     @customer = Customer.find(params[:id])
-    @customer.update(item_params)
+    @customer.update(customer_params)
     redirect_to admin_item_path(@item.id)
   end
   
