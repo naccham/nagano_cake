@@ -1,5 +1,6 @@
 class Public::ItemsController < ApplicationController
   
+  
   def index
     @items = Item.all
   end
@@ -9,4 +10,5 @@ class Public::ItemsController < ApplicationController
     @cart_item = CartItem.new
   end
   
+
 end

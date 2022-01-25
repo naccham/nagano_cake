@@ -3,5 +3,9 @@
 <p><%= @item.introduction%></p>
 <p>¥<%= @item.price %>(税込)</p>
 
-<%= form_with model: @post_image, local:true do |f| %>
-<%= f.hidden_field :name, value: "楽しいRuby" %>
+<%= form_with model: @cart_item, local:true do |f| %>
+  <%= f.hidden_field :item_id, value: @item.id %>
+  <%= f.hidden_field :customer_id, value: current_customer.id %>
+  <%= f.select :amount, *[1..10] %>
+  <%= f.submit 'カートに入れる' %>
+<% end %>

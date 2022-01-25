@@ -4,7 +4,7 @@
   <div>
     <p>会員ID：<%= customer.id %></p>
     <%= link_to admin_customer_path(customer.id) do %>
-      <p>氏名：<%= customer.last_name %></p>
+      <p>氏名：<%= customer.last_name %><%= customer.first_name %></p>
     <% end %>
     <p>メールアドレス：<%= customer.email %></p>
   </div>
