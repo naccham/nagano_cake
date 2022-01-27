@@ -6,8 +6,27 @@ class Public::CartItemsController < ApplicationController
   end
   
   def index
-    @cart_items = CartItem.all
+    @cart_items = current_customer.cart_items
+    @total_price = 0
   end
+  
+  def update
+    @address = Address.find(params[:id])
+    @address.update(address_params)
+    redirect_to addresses_path(current_customer.id)
+  end
+  
+  def destroy_all
+    current_customer.cart_items.destroy_all
+    redirect_to cart_items_path
+  end
+  
+  def destroy
+    @cart_item = CartItem.find(params[:id])
+    @cart_item.destroy
+    redirect_to cart_items_path
+  end
+  
   
   private
   

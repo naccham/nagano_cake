@@ -1,29 +1,42 @@
   <div class="contents">
-    <h1 class="public-contents-title">配送先登録/一覧</h1>
-      <%= form_with model: @address, url: addresses_path, local:true do |f| %>
-        <h4>郵便番号</h4>
-        <%= f.text_field :postal_code %>
-        <h4>住所</h4>
-        <%= f.text_field :address %>
-        <h4>宛名</h4>
-        <%= f.text_field :name %>
-        <%= f.submit '新規登録' %>
-      <% end %>
-
-    <nav class="public-address-column">
-      <ul>
-        <li>郵便番号</li>
-        <li>住所</li>
-        <li>宛名</li>
-      </ul>
-    </nav>
-    <div class="public-address-list">
-      <% @addresses.each do |address| %>
-        <ul>
-          <li><%= address.customer.postal_code %></li>
-          <li><%= address.customer.address %></li>
-          <li><%= address.name %>円</li>
-        </ul>
-      <% end %>
+    <div class="row">
+      <h1 class="public-contents-title">配送先登録/一覧</h1>
+        <%= form_with model: @address, url: addresses_path, local:true do |f| %>
+          <div class="form-group">
+            <%= f.label :postal_code, "郵便番号" %>
+            <%= f.text_field :postal_code, class: '' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :address, "住所" %>
+            <%= f.text_field :address, class: '' %>
+          </div>          
+          <div class="form-group">
+            <%= f.label :name, "宛名" %>
+            <%= f.text_field :name, class: '' %>
+          </div>
+          <div class="form-group">
+            <%= f.submit '新規登録' %>
+          </div>
+        <% end %>
+    
+      <table class="table table-striped">
+        <thead>
+          <th>郵便番号</th>
+          <th>住所</th>
+          <th>宛名</th>
+        </thead>
+        <tbody>
+        <% @addresses.each do |address| %>
+          <tr>
+            <td><%= address.postal_code %></td>
+            <td><%= address.address %></td>
+            <td><%= address.name %></td>
+            <td><%= link_to "編集する", edit_address_path(address.id), class: "btn" %>
+                <%= link_to "削除する", address_path(address.id), class: "btn", method: :delete %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
   </div>
