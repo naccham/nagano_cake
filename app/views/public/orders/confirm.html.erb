@@ -12,6 +12,7 @@
         </thead>
 
         <tbody>
+          
         <% @cart_items.each do |cart_item| %>
           <tr>
             <td><%= cart_item.item.name %></td>
@@ -43,11 +44,22 @@
 
   <div class="row">
     <h3>支払方法</h3>
-    <p><%= @order.payment_method %></p>
+    <p><%= @order.payment_method_i18n %></p>
+    
   </div>
   <div class="row">
     <h3>お届け先</h3>
     <p>〒<%= @order.postal_code %><%= @order.address %></p>
     <p><%= @order.name %></p>
   </div>
+  <%= form_with model: @order, local:true do |f| %> 
+    <%= f.hidden_field :customer_id, value: current_customer.id %> 
+    <%= f.hidden_field :shopping_cost, value: @order.shopping_cost %> <!--送料-->
+    <%= f.hidden_field :total_payment, value: @order.total_payment %> <!--請求金額-->
+    <%= f.hidden_field :payment_method, value: @order.payment_method %> <!--支払方法-->
+    <%= f.hidden_field :postal_code, value: @order.postal_code %> <!--郵便番号-->
+    <%= f.hidden_field :address, value: @order.address %> <!--住所-->
+    <%= f.hidden_field :name, value: @order.name %> <!--氏名-->
+    <%= f.submit '注文を確定する' %>
+  <% end %>
 </div>

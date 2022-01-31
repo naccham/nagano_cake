@@ -6,7 +6,28 @@ class Public::OrdersController < ApplicationController
   end
 
   def create
+    order = Order.new(order_params)
+    order.save
+    cart_items = current_customer.cart_items
+    cart_items. each do |cart_item|
+      order_detail = OrderDetail.new
+      order_detail.item_id = cart_item.item_id
+      order_detail.order_id = order.id
+      order_detail.price = cart_item.item.price
+      order_detail.amount = cart_item.amount
+      order_detail.save
+    end
+    current_customer.cart_items.destroy_all
+    redirect_to complete_path
+  end
 
+  def index
+    @orders = current_customer.orders
+  end
+
+  def show
+    @order.order_details = Order.find(params[:id])
+    # @total_price = order.total_paymen.to_i - order.shopping_cost.to_i
   end
 
   def confirm
@@ -29,8 +50,6 @@ class Public::OrdersController < ApplicationController
     @total_price = 0
     @order.shopping_cost = 800
     render :confirm
-
-
   end
 
   private
