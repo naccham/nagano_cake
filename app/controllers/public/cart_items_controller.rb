@@ -11,9 +11,9 @@ class Public::CartItemsController < ApplicationController
   end
   
   def update
-    @address = Address.find(params[:id])
-    @address.update(address_params)
-    redirect_to addresses_path(current_customer.id)
+    @cart_item = CartItem.find(params[:id])
+    @cart_item.update(cart_item_params)
+    redirect_to cart_items_path
   end
   
   def destroy_all

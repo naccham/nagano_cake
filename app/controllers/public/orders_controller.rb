@@ -15,6 +15,7 @@ class Public::OrdersController < ApplicationController
     if params[:order][:address_option] == "0"
       @order.postal_code = current_customer.postal_code
       @order.address = current_customer.address
+      @order.name = current_customer.last_name + current_customer.first_name
     elsif params[:order][:address_option] == "1"
       @order.postal_code = @address.postal_code #空の@order.postal_codeに@address.postal_codeを代入している
       @order.address = @address.address
@@ -24,11 +25,17 @@ class Public::OrdersController < ApplicationController
       @order.address = params[:order][:address]
       @order.name = params[:order][:name]
     end
+    @cart_items = current_customer.cart_items
+    @total_price = 0
+    @order.shopping_cost = 800
+    render :confirm
+
+
   end
 
   private
 
   def order_params
-    params.require(:order).permit(:customer_id, :postal_code, :address, :name, :shopping_cost, :total_payment, :payment_method, )
+    params.require(:order).permit(:customer_id, :postal_code, :address, :name, :shopping_cost, :total_payment, :payment_method )
   end
 end

@@ -46,6 +46,7 @@
               <li class="header-list-item">
                 <%= link_to "ログアウト", destroy_customer_session_path, class: "header-li", method: :delete %>
               </li>
+              <p class="text-light"><%= current_customer.last_name %>さん、こんにちは！</p>
             <% else %>
               <li class="header-list-item">
                 <%= link_to "About", about_path, class: "header-li" %>
@@ -63,9 +64,9 @@
           </ul>
         </nav>
       </div>
-      
 
-            
+
+
 
     </header>
 
