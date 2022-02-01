@@ -11,14 +11,11 @@
   <p>メールアドレス：<%= @customer.email %></p>
   
   <p>配送先</p>
-  <%= link_to addresses_path do %>
-      <p>一覧を見る</p>
-  <% end %>
+  <%= link_to "一覧を見る", addresses_path, class: 'btn btn-success'  %>
+  
   
   <p>注文履歴</p>
-  <%= link_to orders_path do %>
-      <p>一覧を見る</p>
-  <% end %>
+  <%= link_to "一覧を見る", orders_path, class: 'btn btn-success'  %>
   
   
 </div>
