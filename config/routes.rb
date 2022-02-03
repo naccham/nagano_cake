@@ -9,14 +9,15 @@ Rails.application.routes.draw do
     resources :orders, only: [:show, :update]
     resources :order_details, only: [:update]
   end
-  
+
   devise_for :customers, controllers: { sessions: 'public/sessions', registrations: 'public/registrations' }
   root to: 'public/homes#top'
   get '/about' => 'public/homes#about'
   scope module: :public do
     resources :items, only: [:index, :show]
+    get '/customers/comfirm' => 'customers#confirm'
+    patch '/customers/withdrawal' => 'customers#withdrawal'
     resources :customers, only: [:show, :edit, :update]
-    get '/customers/comfirm' => 'customers#comfirm'
     get '/customers/withdrawal' => 'customers#withdrawal'
     delete '/cart_items/destroy_all' => 'cart_items#destroy_all'
     resources :cart_items, only: [:index, :update, :destroy, :create]

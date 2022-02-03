@@ -1,34 +1,41 @@
-<h2>会員情報編集</h2>
+<div class="container">
+  <div class="row">
+    
+    <h2>会員情報編集</h2>
+    
+    <%= form_with model: @customer, url: admin_customer_path, local:true do |f| %>
+      <div class="form-group">
+        <%= f.label :last_name, "氏" %>
+        <%= f.label :first_name, "名" %>
+        <%= f.text_field :last_name, class: '' %>
+        <%= f.text_field :first_name, class: '' %>
+      </div>
+      <div class="form-group">
+        <label for="fullNameKana">フリガナ</label>
+        <%= f.text_field :last_name_kana, class: '' %>
+        <%= f.text_field :first_name_kana, class: '' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :postal_code, "郵便番号" %>
+        <%= f.text_field :postal_code, class: '' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :address, "住所" %>
+        <%= f.text_field :address, class: '' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :telephone_number, "電話番号" %>
+        <%= f.text_field :telephone_number, class: '' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :email, "メールアドレス" %>
+        <%= f.text_field :email, class: '' %>
+      </div>
+      <div class="form-group">
+        <%= f.submit '編集内容を保存', class:'btn btn-success'  %>
+      </div>
+      <%= link_to "退会する", customers_comfirm_path, class: 'btn btn-danger' %>
+    <% end %>
 
-<%= form_with model: @customer, url: admin_customer_path, local:true do |f| %>
-  <div class="form-group">
-    <label for="fullName">氏名</label>
-    <%= f.text_field :last_name, class: '' %>
-    <%= f.text_field :first_name, class: '' %>
   </div>
-  <div class="form-group">
-    <label for="fullNameKana">フリガナ</label>
-    <%= f.text_field :last_name_kana, class: '' %>
-    <%= f.text_field :first_name_kana, class: '' %>
-  </div>
-  <div class="form-group">
-    <label for="postalCode">郵便番号</label>
-    <%= f.text_field :postal_code, class: '' %>
-  </div>
-  <div class="form-group">
-    <label for="address">住所</label>
-    <%= f.text_field :address, class: '' %>
-  </div>
-  <div class="form-group">
-    <label for="telephoneNumber">電話番号</label>
-    <%= f.text_field :telephone_number, class: '' %>
-  </div>
-  <div class="form-group">
-    <label for="email">メールアドレス</label>
-    <%= f.text_field :email, class: '' %>
-  </div>
-  <div class="form-group">
-    <%= f.submit '編集内容を保存', class:'btn btn-success'  %>
-  </div>
-  <%= link_to "退会する", customers_comfirm_path %>
-<% end %>
+</div>

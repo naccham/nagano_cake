@@ -14,10 +14,14 @@ class Public::CustomersController < ApplicationController
     redirect_to admin_item_path(@item.id)
   end
   
-  def comfirm
+  def confirm
   end
   
   def withdrawal
+    @customer = Customer.find(params[:id])
+    @customer.update(is_active: true)
+    reset_session
+    redirect_to root_path
   end
   
   private

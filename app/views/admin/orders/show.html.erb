@@ -16,18 +16,18 @@
       </div>
       <div class="form-group">
         支払方法
-        <%= @order.payment_method %>
+        <%= @order.payment_method_i18n %>
       </div>
       <div class="form-group">
         注文ステータス
       </div>
     </div>
-    
+
     <table class="table">
       <thead>
         <tr>
           <th>商品名</th>
-          <th>単価</th>
+          <th>単価(税込)</th>
           <th>数量</th>
           <th>小計</th>
           <th>製作ステータス</th>
@@ -37,13 +37,33 @@
         <% @order_details. each do |order_detail| %>
         <tr>
           <td><%= order_detail.item.name %></td>
-          <td><%= order_detail.price %></td>
+          <td><%= order_detail.with_tax_price %></td>
           <td><%= order_detail.amount %></td>
-          <td></td>
+          <td><%= order_detail.subtotal %></td>
           <td>製作ステータス</td>
           <td>更新</td>
+          <% @total_price += (order_detail.with_tax_price * order_detail.amount) %>
         </tr>
         <% end %>
+      </tbody>
+    </table>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>商品合計</th>
+          <th>送料</th>
+          <th>請求金額合計</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= @total_price %></td>
+          <td><%= @order.shopping_cost %>円</td>
+          <td><%= @order.total_payment %></td>
+
+
+        </tr>
       </tbody>
     </table>
   </div>

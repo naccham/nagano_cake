@@ -14,7 +14,7 @@ class DeviseCreateCustomers < ActiveRecord::Migration[5.2]
       t.string :postal_code #郵便番号
       t.string :address #住所
       t.string :telephone_number #電話番号
-      t.boolean :is_active #退会ステータス
+      t.boolean :is_active, default: false #退会ステータス
 
       ## Recoverable
       t.string   :reset_password_token
@@ -41,7 +41,7 @@ class DeviseCreateCustomers < ActiveRecord::Migration[5.2]
       # t.string   :unlock_token # Only if unlock strategy is :email or :both
       # t.datetime :locked_at
 
-      
+
       t.timestamps null: false
     end
 
