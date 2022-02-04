@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
   
-  # before_action :authenticate_admin!,except: [:top, :about, :index]
-  # before_action :authenticate_customer!,except: [:top, :index]
+  # before_action :authenticate_admin!
 
   # before_action :authenticate_customer!, if: :customer_signed_in?
 
