@@ -1,20 +1,24 @@
 class ApplicationController < ActionController::Base
-  
+
   # before_action :authenticate_admin!
+  # before_action :authenticate_customer!
 
-  # before_action :authenticate_customer!, if: :customer_signed_in?
+  def after_sign_in_path_for(resource)
+    case resource
+    when Admin
+      admin_root_path
+    when Customer
+      root_path
+    end
+  end
 
+  def after_sign_out_path_for(resource)
+    case resource
+    when :admin
+      new_admin_session_path
+    when :customer
+      root_path
+    end
+  end
 
-  # def customer_signed_in?
-    # unless controller_name == 'items' && action_name == 'index'
-      # true
-    # end
-  # end
-  
-  # private
-
-  # def after_sign_in_path_for(resource)
-    # admin_root_path
-  # end
-  
 end

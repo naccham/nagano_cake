@@ -7,4 +7,4 @@
 <%= link_to '退会しない', customer_path(current_customer.id), class: 'btn btn-success' %>
 
 </br>
-<%= link_to '退会する', customers_withdrawal_path , method: :patch, class: 'btn btn-danger' %>
+<%= link_to '退会する', customers_withdrawal_path , method: :patch, "data-confirm"=> "本当に退会しますか？", class: 'btn btn-danger' %>
