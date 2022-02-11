@@ -15,15 +15,15 @@ Rails.application.routes.draw do
   end
 
   scope module: :public do
-    resources :items, only: [:index, :show]
     get '/customers/comfirm' => 'customers#confirm'
     patch '/customers/withdrawal' => 'customers#withdrawal'
-    resources :customers, only: [:show, :edit, :update]
     delete '/cart_items/destroy_all' => 'cart_items#destroy_all'
-    resources :cart_items, only: [:index, :update, :destroy, :create]
     post '/confirm' => 'orders#confirm'
-    resources :orders, only: [:new, :create, :index, :show]
     get '/complete' => 'orders#complete'
+    resources :items, only: [:index, :show]
+    resources :customers, only: [:show, :edit, :update]
+    resources :cart_items, only: [:index, :update, :destroy, :create]
+    resources :orders, only: [:new, :create, :index, :show]
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
   end
 end
